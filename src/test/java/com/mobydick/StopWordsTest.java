@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class StopWordsTest {
 
@@ -37,6 +39,11 @@ public class StopWordsTest {
     @Test
     public void whenStopWordFileLoadStopWordsList(){
 
-        assertEquals(expected, stopWordsService.loadListFromFile(""));
+        FileService fileService = mock(FileService.class);
+        when(fileService.loadStringListFromFile(anyString())).thenReturn(initial);
+
+        stopWordsService.setFileService(fileService);
+
+        assertEquals(expected, stopWordsService.loadListFromFile(anyString()));
     }
 }
