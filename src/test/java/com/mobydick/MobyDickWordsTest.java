@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Matchers.anyList;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -33,6 +34,12 @@ public class MobyDickWordsTest {
         mobyDickService.setFileService(fileService);
 
         assertEquals(initial, mobyDickService.loadLinesListFromFile(anyString()));
+    }
+
+    @Test
+    public void whenMobyDickLinesListSplitIntoWordsList(){
+
+        assertEquals(expected, mobyDickService.splitLinesIntoWordsList(initial));
     }
 
 }
