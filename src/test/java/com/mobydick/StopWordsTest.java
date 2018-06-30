@@ -2,7 +2,6 @@ package com.mobydick;
 
 import com.mobydick.service.FileService;
 import com.mobydick.service.StopWordsService;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.Arrays;
