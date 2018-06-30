@@ -1,13 +1,14 @@
 package com.mobydick.service;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class StopWordsService {
 
-    public List<String> loadListFromFile(){
+    private FileService fileService = new FileService();
+
+    public List<String> loadListFromFile(String fileName){
         try {
-            return Arrays.asList("about", "above", "across", "the", "on", "of", "off");
+            return fileService.loadStringListFromFile(fileName);
         }catch(Exception e){
             throw new RuntimeException(e);
         }

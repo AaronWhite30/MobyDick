@@ -1,5 +1,6 @@
 package com.mobydick;
 
+import com.mobydick.service.FileService;
 import com.mobydick.service.StopWordsService;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.mock;
 
 public class StopWordsTest {
 
@@ -35,6 +37,6 @@ public class StopWordsTest {
     @Test
     public void whenStopWordFileLoadStopWordsList(){
 
-        assertEquals(expected, stopWordsService.loadListFromFile());
+        assertEquals(expected, stopWordsService.loadListFromFile(""));
     }
 }
