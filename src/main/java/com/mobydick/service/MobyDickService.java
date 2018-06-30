@@ -1,17 +1,20 @@
 package com.mobydick.service;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class MobyDickService {
 
-    public List<String> loadListFromFile(String fileName){
+    FileService fileService = new FileService();
+
+    public List<String> loadLinesListFromFile(String fileName){
         try {
-            return Arrays.asList("Two", "enormous", "wooden", "pots", "painted", "black", "and", "suspended",
-                "by", "asses'", "ears", "swun", "from", "the", "cross - trees", "of", "an", "old", "top - mast", "planted", "in", "front",
-                "of", "an", "old", "doorway.", "The", "horns", "of", "the", "cross - trees", "were", "sawed", "off", "on", "the", "other");
+            return fileService.loadStringListFromFile(fileName);
         }catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+
+    public void setFileService(FileService fileService) {
+        this.fileService = fileService;
     }
 }
