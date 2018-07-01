@@ -4,10 +4,7 @@ import com.mobydick.service.FileService;
 import com.mobydick.service.MobyDickService;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Matchers.anyString;
@@ -54,13 +51,13 @@ public class MobyDickWordsTest {
         put("an", 2);
     }};
 
-    Map<String,Integer> expectedSortedListForMap = new HashMap<String, Integer>()
+    Map<String,Integer> expectedSortedListForMap = new LinkedHashMap<String, Integer>()
     {{
         put("cross", 2);
         put("trees", 2);
         put("an", 2);
-        put("old", 1);
         put("top", 1);
+        put("old", 1);
         put("mast", 1);
     }};
 
@@ -96,6 +93,13 @@ public class MobyDickWordsTest {
     @Test
     public void whenMapOfMobyDickWordOccurrenesSortMapDescendingLimitTo100(){
 
-        assertEquals(expectedSortedListForMap, mobyDickService.sortWordOccurrencesMapDescendingLimitTo100(unsortedMap));
+        List<Map.Entry<String, Integer>> actual = mobyDickService.sortWordOccurrencesMapDescendingLimitTo100(unsortedMap);
+        Object[] sortedString = expectedSortedListForMap.keySet().toArray();
+        assertEquals(sortedString[0], actual.get(0).getKey());
+        assertEquals(sortedString[1], actual.get(1).getKey());
+        assertEquals(sortedString[2], actual.get(2).getKey());
+        assertEquals(sortedString[3], actual.get(3).getKey());
+        assertEquals(sortedString[4], actual.get(4).getKey());
+        assertEquals(sortedString[5], actual.get(5).getKey());
     }
 }
