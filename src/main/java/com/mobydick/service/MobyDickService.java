@@ -33,10 +33,10 @@ public class MobyDickService {
         return mobyDickSplitted;
     }
 
-    public List<String> filterOutStopWordsFromList(List<String> stopWordsList){
-        return Arrays.asList("two", "enormous", "wooden", "pots", "painted", "black", "and",
-            "suspended", "by", "asses", "ears", "swung", "from", "cross", "trees", "an", "old", "topmast",
-            "planted", "in", "front", "an", "old", "doorway", "horns", "cross", "trees", "were", "sawed", "other");
+    public List<String> filterOutStopWordsFromList(List<String> mobyDickWordList, List<String> stopWordsList){
+
+        return mobyDickWordList.stream()
+            .filter(string -> stopWordsList.indexOf(string) < 1).collect(Collectors.toList());
     }
 
     public void setFileService(FileService fileService) {

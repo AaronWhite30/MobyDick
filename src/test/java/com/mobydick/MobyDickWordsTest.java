@@ -27,7 +27,7 @@ public class MobyDickWordsTest {
     private List<String> stopWordsList = Arrays.asList("about", "above", "across", "the", "on", "of", "off");
 
     private List<String> expectedStopWordsFilteredList = Arrays.asList("two", "enormous", "wooden", "pots", "painted", "black", "and",
-        "suspended", "by", "asses", "ears", "swung", "from", "cross", "trees", "an", "old", "topmast",
+        "suspended", "by", "asses", "ears", "swung", "from", "cross", "trees", "an", "old", "top", "mast",
         "planted", "in", "front", "an", "old", "doorway", "horns", "cross", "trees", "were", "sawed", "other");
 
     @Test
@@ -50,6 +50,6 @@ public class MobyDickWordsTest {
     @Test
     public void whenMobyDickWordsListFilterOutStopWords(){
 
-        assertEquals(expectedStopWordsFilteredList, mobyDickService.filterOutStopWordsFromList(stopWordsList));
+        assertEquals(expectedStopWordsFilteredList, mobyDickService.filterOutStopWordsFromList(expectedWordsList, stopWordsList));
     }
 }
