@@ -50,6 +50,17 @@ public class MobyDickService {
         return wordOccurrenceMap;
     }
 
+    public List<Map.Entry<String, Integer>> sortWordOccurrencesMapDescendingLimitTo100(Map<String,Integer> unsortedMap){
+        return unsortedMap
+            .entrySet()
+            .stream()
+            .sorted(
+                Map.Entry.comparingByValue(
+                    (Integer i1, Integer i2) -> i2 - i1))
+            .limit(100)
+            .collect(Collectors.toList());
+    }
+
     public void setFileService(FileService fileService) {
         this.fileService = fileService;
     }

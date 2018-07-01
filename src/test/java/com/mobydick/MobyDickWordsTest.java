@@ -44,6 +44,26 @@ public class MobyDickWordsTest {
         put("an", 2);
     }};
 
+    Map<String,Integer> unsortedMap = new HashMap<String, Integer>()
+    {{
+        put("cross", 2);
+        put("trees", 2);
+        put("old", 1);
+        put("top", 1);
+        put("mast", 1);
+        put("an", 2);
+    }};
+
+    Map<String,Integer> expectedSortedListForMap = new HashMap<String, Integer>()
+    {{
+        put("cross", 2);
+        put("trees", 2);
+        put("an", 2);
+        put("old", 1);
+        put("top", 1);
+        put("mast", 1);
+    }};
+
     @Test
     public void whenMobyDickFileLoadMobyDickLinesList(){
 
@@ -71,5 +91,11 @@ public class MobyDickWordsTest {
     public void whenMobyDickWordListCreateMapOfWordOccurrences(){
 
         assertEquals(expectedListForMap, mobyDickService.createMapOfWordOccurrences(stopFilteredListForMap));
+    }
+
+    @Test
+    public void whenMapOfMobyDickWordOccurrenesSortMapDescendingLimitTo100(){
+
+        assertEquals(expectedSortedListForMap, mobyDickService.sortWordOccurrencesMapDescendingLimitTo100(unsortedMap));
     }
 }
