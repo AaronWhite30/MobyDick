@@ -5,7 +5,9 @@ import com.mobydick.service.MobyDickService;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.mockito.Matchers.anyString;
@@ -30,6 +32,18 @@ public class MobyDickWordsTest {
         "suspended", "by", "asses", "ears", "swung", "from", "cross", "trees", "an", "old", "top", "mast",
         "planted", "in", "front", "an", "old", "doorway", "horns", "cross", "trees", "were", "sawed", "other");
 
+    List<String> stopFilteredListForMap = Arrays.asList("cross", "trees", "an", "old", "top", "mast", "an", "cross", "trees");
+
+    Map<String,Integer> expectedListForMap = new HashMap<String, Integer>()
+    {{
+        put("cross", 2);
+        put("trees", 2);
+        put("old", 1);
+        put("top", 1);
+        put("mast", 2);
+        put("an", 2);
+    }};
+
     @Test
     public void whenMobyDickFileLoadMobyDickLinesList(){
 
@@ -51,5 +65,11 @@ public class MobyDickWordsTest {
     public void whenMobyDickWordsListFilterOutStopWords(){
 
         assertEquals(expectedStopWordsFilteredList, mobyDickService.filterOutStopWordsFromList(expectedWordsList, stopWordsList));
+    }
+
+    @Test
+    public void whenMobyDickWordListCreateMapOfWordOccurrences(){
+
+        assertEquals(expectedListForMap, mobyDickService.createMapOfWordOccurrences(stopFilteredListForMap));
     }
 }

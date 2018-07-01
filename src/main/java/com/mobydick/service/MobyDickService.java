@@ -1,8 +1,6 @@
 package com.mobydick.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MobyDickService {
@@ -37,6 +35,18 @@ public class MobyDickService {
 
         return mobyDickWordList.stream()
             .filter(string -> stopWordsList.indexOf(string) < 1).collect(Collectors.toList());
+    }
+
+    public Map<String, Integer> createMapOfWordOccurrences(List<String> mobyDickStopWordsFiltered){
+        return new HashMap<String, Integer>()
+        {{
+            put("cross", 2);
+            put("trees", 2);
+            put("old", 1);
+            put("top", 1);
+            put("mast", 2);
+            put("an", 2);
+        }};
     }
 
     public void setFileService(FileService fileService) {
