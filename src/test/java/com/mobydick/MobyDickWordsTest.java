@@ -40,7 +40,7 @@ public class MobyDickWordsTest {
         put("trees", 2);
         put("old", 1);
         put("top", 1);
-        put("mast", 2);
+        put("mast", 1);
         put("an", 2);
     }};
 

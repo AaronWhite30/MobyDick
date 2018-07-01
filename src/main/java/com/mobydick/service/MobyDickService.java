@@ -38,15 +38,16 @@ public class MobyDickService {
     }
 
     public Map<String, Integer> createMapOfWordOccurrences(List<String> mobyDickStopWordsFiltered){
-        return new HashMap<String, Integer>()
-        {{
-            put("cross", 2);
-            put("trees", 2);
-            put("old", 1);
-            put("top", 1);
-            put("mast", 2);
-            put("an", 2);
-        }};
+        Map<String, Integer> wordOccurrenceMap = new HashMap<>();
+        mobyDickStopWordsFiltered.stream()
+            .forEach(word -> {
+                if(wordOccurrenceMap.containsKey(word)){
+                    wordOccurrenceMap.put(word, wordOccurrenceMap.get(word) + 1);
+                }else{
+                    wordOccurrenceMap.put(word, 1);
+                }
+            });
+        return wordOccurrenceMap;
     }
 
     public void setFileService(FileService fileService) {
