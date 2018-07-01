@@ -19,11 +19,11 @@ public class MobyDickWordsTest {
 
     private List<String> initial = Arrays.asList("Two enormous wooden pots painted black, and suspended by asses' ears,",
         "swung from the cross - trees of an old top - mast, planted in front of an",
-        "old doorway. The horns of the cross-trees were sawed off on the other");
+        "old doorway. The horns of the cross - trees were sawed off on the other");
 
-    private List<String> expected = Arrays.asList("Two", "enormous", "wooden", "pots", "painted", "black", "and", "suspended",
-        "by", "asses'", "ears,", "swun", "from", "the", "cross - trees", "of", "an", "old", "top - mast", "planted", "in", "front",
-        "of", "an", "old", "doorway.", "The", "horns", "of", "the", "cross - trees", "were", "sawed", "off", "on", "the", "other");
+    private List<String> expectedWordsList = Arrays.asList("two", "enormous", "wooden", "pots", "painted", "black", "and", "suspended",
+        "by", "asses", "ears", "swung", "from", "the", "cross", "trees", "of", "an", "old", "top", "mast", "planted", "in", "front",
+        "of", "an", "old", "doorway", "the", "horns", "of", "the", "cross", "trees", "were", "sawed", "off", "on", "the", "other");
 
     @Test
     public void whenMobyDickFileLoadMobyDickLinesList(){
@@ -37,9 +37,9 @@ public class MobyDickWordsTest {
     }
 
     @Test
-    public void whenMobyDickLinesListSplitIntoWordsList(){
+    public void whenMobyDickLinesListSplitIntoWordsListWithoutSpecialCharacaters(){
 
-        assertEquals(expected, mobyDickService.splitLinesIntoWordsList(initial));
+        assertEquals(expectedWordsList, mobyDickService.splitLinesIntoWordsListThenFilterSpecialCharacters(initial));
     }
 
 }

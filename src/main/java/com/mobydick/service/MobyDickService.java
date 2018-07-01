@@ -1,7 +1,9 @@
 package com.mobydick.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MobyDickService {
 
@@ -15,10 +17,20 @@ public class MobyDickService {
         }
     }
 
-    public List<String> splitLinesIntoWordsList(List<String> linesListToBeSplitted){
-        return Arrays.asList("Two", "enormous", "wooden", "pots", "painted", "black", "and", "suspended",
-            "by", "asses'", "ears,", "swun", "from", "the", "cross - trees", "of", "an", "old", "top - mast", "planted", "in", "front",
-            "of", "an", "old", "doorway.", "The", "horns", "of", "the", "cross - trees", "were", "sawed", "off", "on", "the", "other");
+    public List<String> splitLinesIntoWordsListThenFilterSpecialCharacters(List<String> linesListToBeSplitted){
+        List<String> mobyDickSplitted = new ArrayList<>();
+
+        linesListToBeSplitted
+            .stream()
+            .forEach(line -> {
+                List<String> splitLine = Arrays.asList(line.split(" "));
+                splitLine.stream()
+                    .filter(string -> string.length() > 1)
+                    .map(str -> str.toLowerCase().replaceAll("[\\W]",""))
+                    .forEach(s -> mobyDickSplitted.add(s));
+            });
+
+        return mobyDickSplitted;
     }
 
     public void setFileService(FileService fileService) {
